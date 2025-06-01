@@ -19,7 +19,7 @@ function UpcomingMuviesSection() {
                 throw new Error(`Error: ${error}`)
             }
         })
-    }, [muvieService])
+    }, [])
 
     return (
         <Section 

@@ -38,7 +38,7 @@ function Search() {
                 }
             })
             .finally(() => setLoading(false))
-    }, [paginationIndex, genres, muvieService, type])
+    }, [paginationIndex])
 
     if(loading) {
         return <LoadingWindow/>

@@ -1,3 +1,4 @@
+import { useParams } from "react-router"
 import SectionContainer from "../../components/section.container"
 import MuvieService from "../../services/muvie-service"
 import { useEffect, useState } from "react"
@@ -14,6 +15,7 @@ import { IoPerson } from "react-icons/io5";
 
 function DetailMuvie() {
 
+    const path = useParams()
     const muvieService = new MuvieService()
     const [currMuvie, setCurrMuvie] = useState<IMuvieDetail | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
@@ -41,7 +43,7 @@ function DetailMuvie() {
                     throw new Error(`Error: ${error}`)
                 }
             })
-    }, [muvieId, muvieService, selectedMuvieGanresId])
+    }, [path.id])
 
     if(loading) {
         return <LoadingWindow/>

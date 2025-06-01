@@ -39,7 +39,7 @@ function Muvies() {
                 }
             })
             .finally(() => setLoading(false)) 
-    }, [muvieService, paginationIndex, type, types])
+    }, [paginationIndex])
 
     if(loading) {
         return <LoadingWindow/>
@@ -52,7 +52,7 @@ function Muvies() {
             >
                 {types.find(item => item.type === type)?.title}
             </h1>
-            <div className="grid grid-cols-5 gap-4 mt-12">
+            <div className="grid grid-cols-5 gap-4 mt-12 max-md:col-span-2">
                 {muviesList.map((item, index) => (
                     <MuvieCard {...item} key={index}/>
                 ))}
