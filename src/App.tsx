@@ -3,11 +3,13 @@ import Home from "./pages/home/home"
 import Navigation from "./components/navigation"
 import DetailMuvie from "./pages/detail-muvie/detail-muvie"
 import Search from "./pages/search/search"
-import Muvies from "./pages/muvie/muvie"
+import Muvies from "./pages/muvie/muvies"
 import MuvieService from "./services/muvie-service"
 import { useEffect } from "react"
 import type { IGenresData } from "./models"
 import { useGenreStore } from "./stores"
+import NotFound from "./pages/not-found/not-found"
+import SearchResults from "./pages/search/search-results"
 
 function App() {
 
@@ -29,9 +31,12 @@ function App() {
       <Navigation/>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/muvie/:id" element={<DetailMuvie/>}/>
-        <Route path="/search/:type" element={<Search/>}/>
-        <Route path="/:type" element={<Muvies/>}/>
+        <Route path="/about-muvie/:name" element={<DetailMuvie/>}/>
+        <Route path="/search" element={<Search/>}/>
+        <Route path="/search/results" element={<SearchResults/>}/>
+        <Route path="/:type" element={<Muvies typeComp="fromHome"/>}/>
+        <Route path="/muvies/:type" element={<Muvies typeComp="fromDetailMuvie"/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </>
   )

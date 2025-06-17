@@ -21,10 +21,10 @@ export const useGenreStore = create<GenreStore>()(
 )
 
 interface IDetailMuvieStore {
-  selectedMuvieGanresId?: number[]
+  // selectedMuvieGanresId?: number[]
   muvieId?: number
   genres?: IGenre[]
-  setGenresId: (id: number[]) => void
+  // setGenresId: (id: number[]) => void
   setGenres: (genres: IGenre[]) => void
   setMuvieId: (id: number) => void
 }
@@ -32,10 +32,10 @@ interface IDetailMuvieStore {
 export const useDetailMuvieStore = create<IDetailMuvieStore>()(
   persist(
     (set) => ({
-      selectedMuvieGanresId: undefined,
+      // selectedMuvieGanresId: undefined,
       muvieId: undefined,
       genres: undefined,
-      setGenresId: (selectedMuvieGanresId) => set({ selectedMuvieGanresId }),
+      // setGenresId: (selectedMuvieGanresId) => set({ selectedMuvieGanresId }),
       setGenres: (genres) => set({ genres }),
       setMuvieId: (muvieId) => set({ muvieId }),
     }),
@@ -66,8 +66,10 @@ export const useMuviesTypesStore = create<IMuvieTypes>(() => ({
 
 interface ISearchStore {
   searchGenreId?: number
+  searchMultipleGenre: number[]
   searchGenreName: string
   setSearchGenreId: (genreId: number) => void
+  setSearchMultipleGenreId: (multipleGenreId: number[]) => void
   setSearchGenreName: (genreName: string) => void
 }
 
@@ -76,7 +78,9 @@ export const useSearchMuvieStore = create<ISearchStore>()(
     (set) => ({
       searchGenreId: undefined,
       searchGenreName: "",
+      searchMultipleGenre: [],
       setSearchGenreId: (searchGenreId) => set({ searchGenreId }),
+      setSearchMultipleGenreId: (searchMultipleGenre) => set({ searchMultipleGenre }),
       setSearchGenreName: (searchGenreName) => set({ searchGenreName }),
     }),
     {

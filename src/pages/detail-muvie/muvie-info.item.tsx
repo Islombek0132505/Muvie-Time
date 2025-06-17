@@ -20,7 +20,7 @@ function MuvieInfoItem({name, title, link}: IMuvieInfoItem) {
                 setSearchGenreId(item.id)
             }
         })
-        navigate(`/search/${name}`)
+        navigate(`/muvies/${name}`)
     }
 
     return (

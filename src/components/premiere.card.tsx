@@ -8,12 +8,11 @@ function PremiereCard(data: IMuvies) {
 
     const muvieService = new MuvieService()
     const navigate = useNavigate()
-    const {setMuvieId, setGenresId} = useDetailMuvieStore()
+    const {setMuvieId} = useDetailMuvieStore()
 
     const navigationAction = () => {
-        navigate(`/muvie/${data.title}`)
+        navigate(`/about-muvie/${data.title}`)
         setMuvieId(data.id)
-        setGenresId(data.genre_ids)
     }
 
     return (

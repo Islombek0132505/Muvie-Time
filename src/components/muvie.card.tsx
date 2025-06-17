@@ -12,7 +12,7 @@ function MuvieCard(data: IMuvies) {
 
     const muvieService = new MuvieService()
     const navigate = useNavigate()
-    const {setGenresId, setMuvieId} = useDetailMuvieStore()
+    const {setMuvieId} = useDetailMuvieStore()
 
     const { ref, inView } = useInView({
         triggerOnce: true,  // ✅ faqat bir marta animatsiya bo‘lsin
@@ -20,9 +20,8 @@ function MuvieCard(data: IMuvies) {
     })
 
     const toMovieDetail = () => {
-        navigate(`/muvie/${data.title}`)
+        navigate(`/about-muvie/${data.title}`)
         setMuvieId(data.id)
-        setGenresId(data.genre_ids)
     }
 
     return (

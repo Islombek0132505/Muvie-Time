@@ -1,71 +1,66 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import SectionContainer from "../../components/section.container"
 import { useGenreStore } from "../../stores"
-import MuvieService from "../../services/muvie-service"
-import type { IData, IMuvies } from "../../models"
-import { useParams } from "react-router"
-import LoadingWindow from "../../components/loading-window"
-import MuvieCard from "../../components/muvie.cars"
+import { useNavigate } from "react-router"
+import { cn } from "../../../utils/cn"
 
 function Search() {
 
     const {genres} = useGenreStore()
-    const muvieService = new MuvieService()
-    const [paginationIndex, setPaginationIndex] = useState<number>(1)
-    const [muviesList, setMuvieList] = useState<IMuvies[]>([])
-    const [loading, setLoading] = useState<boolean>(true)
-    const {type} = useParams()
+    const [searchGenres, setSearchGenres] = useState<number[]>([])
+    const navigate = useNavigate()
 
-    const nextAction = () => {
-        setLoading(true)
-        setPaginationIndex(index => index += 1)
-    }
-
-    const prevAction = () => {
-        setLoading(true)
-        setPaginationIndex(index => index === 1 ? 1 : index -= 1)
-    }
-
-    useEffect(() => {
-        
-        muvieService.searchMuviesWithGenres(genres?.find(item => item.name === type)?.id, paginationIndex)
-            .then(data => {
-                try {
-                    const muvieData = data as IData
-                    setMuvieList(muvieData.results)
-                } catch (error) {
-                    throw new Error(`Error: ${error}`)
-                }
-            })
-            .finally(() => setLoading(false))
-    }, [paginationIndex])
-
-    if(loading) {
-        return <LoadingWindow/>
+    const addToSearchGenres = (searchGenreID: number) => {
+        if(searchGenres.includes(searchGenreID)) {
+            setSearchGenres(searchGenres.filter(item => item !== searchGenreID))
+        }
+        if(!searchGenres.includes(searchGenreID)) {
+            setSearchGenres([...searchGenres, searchGenreID])
+        }
     }
 
     return (
         <SectionContainer className="mt-10">
-            <h1 className="text-4xl text-white font-medium max-md:text-2xl border-l-4 border-blue-500 pl-4 mb-4">
-                {type}
-            </h1>
-            <div className="grid grid-cols-5 max-md:grid-cols-2 gap-4">
-                {muviesList.map((item, index) => (
-                    <MuvieCard key={index} {...item}/>
-                ))}
+            <div>
+                <h1 className="text-3xl text-white text-center">Search with genres</h1>
+                <div className="flex flex-wrap items-center gap-2 mt-4">
+                    <h2 className="text-gray-200 text-3xl">Genres: </h2>
+                    {genres?.map((item, key) => (
+                        <p 
+                            className={cn(
+                                "text-xl px-4 py-2 text-gray-200 rounded bg-gray-700 cursor-pointer transition-colors",
+                                searchGenres.includes(item.id) && "bg-blue-600"
+                            )}
+                            key={key}
+                            onClick={() => addToSearchGenres(item.id)}
+                        >
+                            {item.name}
+                        </p>
+                    ))}
+                </div>
+                <div className="flex justify-center">
+                    <button 
+                        onClick={() => navigate("/search/results")}
+                        className="text-white mt-6 text-xl px-6 py-2 bg-gray-800 rounded"
+                    >
+                        Search
+                    </button>
+                </div>
             </div>
-            <div className="flex items-center justify-center gap-4 mt-6">
+            
+            <span className="w-full h-[2px] bg-gray-400 mt-4"></span>
+
+            <div className="text-3xl text-white text-center mt-10">Search with muvie name</div>
+            <div className="flex gap-2 items-center mt-4">
+                <input 
+                    type="text" 
+                    className="text-white w-full h-12 bg-gray-700 rounded-md px-4 focus:outline-none text-xl"
+                />
                 <button 
-                    className="py-2 rounded-md bg-gray-700 px-6 text-white font-medium hover:bg-gray-700/70 transition-colors"
-                    onClick={prevAction}
+                    onClick={() => navigate("/search/results")}
+                    className="text-white text-xl px-6 bg-gray-800 rounded h-12"
                 >
-                    Prev
-                </button>
-                <button
-                    className="py-2 rounded-md bg-gray-700 px-6 text-white font-medium hover:bg-gray-700/70 transition-colors"
-                    onClick={nextAction}
-                >
-                    Next
+                    Search
                 </button>
             </div>
         </SectionContainer>

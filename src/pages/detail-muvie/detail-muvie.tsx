@@ -1,4 +1,3 @@
-import { useParams } from "react-router"
 import SectionContainer from "../../components/section.container"
 import MuvieService from "../../services/muvie-service"
 import { useEffect, useState } from "react"
@@ -7,7 +6,7 @@ import { FaDownload } from "react-icons/fa6";
 import MuvieInfoItem from "./muvie-info.item"
 import { TimeConverterMinToHour } from "../../../utils/time-converter"
 import LoadingWindow from "../../components/loading-window"
-import MuvieCard from "../../components/muvie.cars"
+import MuvieCard from "../../components/muvie.card"
 import { useDetailMuvieStore } from "../../stores"
 import { FaStar } from "react-icons/fa"
 import { TbSeparator } from "react-icons/tb";
@@ -15,12 +14,11 @@ import { IoPerson } from "react-icons/io5";
 
 function DetailMuvie() {
 
-    const path = useParams()
     const muvieService = new MuvieService()
     const [currMuvie, setCurrMuvie] = useState<IMuvieDetail | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const [similarMuvies, setSimilarMuvies] = useState<IMuvies[]>([])
-    const { muvieId, selectedMuvieGanresId} = useDetailMuvieStore()
+    const { muvieId } = useDetailMuvieStore()
 
     useEffect(() => {
         setLoading(true)
@@ -29,21 +27,23 @@ function DetailMuvie() {
                 try {
                     const muvie = data as IMuvieDetail
                     setCurrMuvie(muvie)
+                    console.log(muvie);
+                    
                 } catch (error) {
                     throw new Error(`Error: ${error}`)
                 }
             })
             .finally(() => setLoading(false))
-        muvieService.searchMuviesWithGenres(selectedMuvieGanresId && selectedMuvieGanresId[0])
+        muvieId && muvieService.getSimilarMuvies(muvieId)
             .then(data => {
                 try {
-                    const muvieData = data as IData
+                    const muvieData = data as IData                    
                     setSimilarMuvies(muvieData.results.slice(0, 10))
                 } catch (error) {
                     throw new Error(`Error: ${error}`)
                 }
             })
-    }, [path.id])
+    }, [muvieId])
 
     if(loading) {
         return <LoadingWindow/>

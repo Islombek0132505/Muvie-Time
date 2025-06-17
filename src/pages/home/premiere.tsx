@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import MuvieService from "../services/muvie-service"
-import Carousel from "./carousel"
-import PremiereCard from "./premiere.card"
-import type { IData, IMuvies } from "../models"
-import LoadingWindow from "./loading-window"
+import MuvieService from "../../services/muvie-service"
+import Carousel from "../../components/carousel"
+import PremiereCard from "../../components/premiere.card"
+import type { IData, IMuvies } from "../../models"
+import LoadingWindow from "../../components/loading-window"
 import { motion } from "framer-motion"
 
 function Premiere() {
@@ -22,7 +22,7 @@ function Premiere() {
                 throw new Error(`Error: ${error}`)
             }
         })
-    })
+    }, [])
 
     return(
 

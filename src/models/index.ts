@@ -1,6 +1,7 @@
 export interface IData {
     page: number
     results: IMuvies[]
+    total_pages: number
 }
 
 export interface IMuvies {

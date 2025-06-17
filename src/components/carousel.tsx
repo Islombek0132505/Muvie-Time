@@ -29,9 +29,10 @@ const Carousel = ({children, autoScroll, interval, className, carouselItemsCount
             const intervalF = setInterval(() => {
                 setCurrIndex(currIndex => currIndex === carouselItemsCount-1 ? 0 : currIndex + 1)                
             }, interval ? interval : 4000)
+            
             return () => clearInterval(intervalF)
         }
-    }, [autoScroll, carouselItemsCount, interval])
+    }, [currIndex])
 
     return (
         <div 
