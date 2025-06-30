@@ -16,7 +16,7 @@ function Logo() {
             initial={{x: -200, opacity: 0}}
             animate={{x: 0, opacity: 1}}
             transition={{duration: 0.5, ease: "easeInOut", delay: 1.3}}
-            className="text-4xl text-white font-medium flex items-center gap-1 cursor-pointer"
+            className="text-4xl text-white font-medium flex items-center gap-1 cursor-pointer max-md:text-3xl"
             onClick={logoTapped}
         >
             Muvie

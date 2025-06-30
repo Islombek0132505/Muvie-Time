@@ -1,6 +1,8 @@
+import { IoHome, IoSearch } from "react-icons/io5"
+
 export const navItems = [
-    {title: "Home", route: "/"},
-    {title: "Search", route: "/search"},
+    {title: "Home", route: "/", icon: IoHome},
+    {title: "Search", route: "/search", icon: IoSearch},
 ]
 
 export const muvieTypes = {

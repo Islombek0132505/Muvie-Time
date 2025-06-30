@@ -33,7 +33,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/about-muvie/:name" element={<DetailMuvie/>}/>
         <Route path="/search" element={<Search/>}/>
-        <Route path="/search/results" element={<SearchResults/>}/>
+        <Route path="/search-results" element={<SearchResults/>}/>
         <Route path="/:type" element={<Muvies typeComp="fromHome"/>}/>
         <Route path="/muvies/:type" element={<Muvies typeComp="fromDetailMuvie"/>}/>
         <Route path="*" element={<NotFound/>}/>

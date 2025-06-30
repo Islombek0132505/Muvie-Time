@@ -31,10 +31,10 @@ function Premiere() {
             { !loading && 
                 <div className="w-full px-32 py-10 h-full flex flex-col justify-center items-center bg-gray-900 max-md:px-4 overflow-hidden max-md:py-6 relative">
                     <motion.h1 
-                        initial={{translateY: 100, opacity: 0}}
-                        animate={{translateY: 0, opacity: 1}}
-                        transition={{duration: 1, ease: "easeIn", delay: 1.5}}
-                        className="text-4xl animate-pulse text-white max-md:text-xl self-start border-l-4 border-blue-500 pl-4 mb-8 max-md:mb-4 "
+                        initial={{translateX: -400, opacity: 0}}
+                        animate={{translateX: 0, opacity: 1}}
+                        transition={{duration: 1, ease: "easeIn", delay: 0.5}}
+                        className="text-4xl animate-pulse text-white max-md:text-xl self-start border-l-4 border-blue-500 pl-4 mb-8 max-md:mb-4"
                     >
                         Premieres
                     </motion.h1>

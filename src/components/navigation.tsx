@@ -20,18 +20,14 @@ function Navigation() {
                 initial={{x: 200, opacity: 0}}
                 animate={{x: 0, opacity: 1}}
                 transition={{duration: 0.5, ease: "easeInOut", delay: 1.3}}
-                className="flex items-center gap-4 max-md:hidden"
+                className="flex items-center gap-4 text-white"
             >
                 {navItems.map((item, index) => (
                     <NavLink
                         key={index}
                         to={item.route}
-                        className={cn(
-                            "no-underline text-xl text-white",
-                            
-                        )}
                     >
-                        {item.title}
+                        <item.icon className="max-md:size-6 md:size-7 lg:size-8"/>
                     </NavLink>
                 ))}
             </motion.div>

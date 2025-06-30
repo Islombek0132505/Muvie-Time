@@ -64,13 +64,17 @@ export const useMuviesTypesStore = create<IMuvieTypes>(() => ({
   ]
 }))
 
+type SearchType = "name" | "genres"
+
 interface ISearchStore {
   searchGenreId?: number
   searchMultipleGenre: number[]
   searchGenreName: string
+  searchType?: SearchType
   setSearchGenreId: (genreId: number) => void
   setSearchMultipleGenreId: (multipleGenreId: number[]) => void
   setSearchGenreName: (genreName: string) => void
+  setSearchType: (searchType: SearchType) => void
 }
 
 export const useSearchMuvieStore = create<ISearchStore>()(
@@ -79,9 +83,11 @@ export const useSearchMuvieStore = create<ISearchStore>()(
       searchGenreId: undefined,
       searchGenreName: "",
       searchMultipleGenre: [],
+      searchType: undefined,
       setSearchGenreId: (searchGenreId) => set({ searchGenreId }),
       setSearchMultipleGenreId: (searchMultipleGenre) => set({ searchMultipleGenre }),
       setSearchGenreName: (searchGenreName) => set({ searchGenreName }),
+      setSearchType: (searchType) => set({searchType})
     }),
     {
       name: 'search-muvie-store',

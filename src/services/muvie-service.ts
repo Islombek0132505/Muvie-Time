@@ -14,12 +14,16 @@ class MuvieService {
         return await response.json()
     }
 
-    searchMuvieWithName = async (name: string) => {
-        return this.getRecourses(`${this._baseUrl}/search/movie?${this._apiKey}&query=${name}}`)
+    searchMuvieWithName = async (name: string, index = 1) => {
+        return this.getRecourses(`${this._baseUrl}/search/movie?${this._apiKey}&query=${name}&page=${index}`)
     }
 
     getMuvieWithGenre = async (id: number, index = 1) => {
         return this.getRecourses(`${this._baseUrl}/discover/movie?${this._apiKey}&with_genres=${id}&${this._lngUrl}&page=${index}`)
+    }
+
+    getMuvieWithGenres = async (genres: number[], index = 1) => {
+        return this.getRecourses(`${this._baseUrl}/discover/movie?${this._apiKey}&with_genres=${genres.join(",")}&${this._lngUrl}&page=${index}`)
     }
 
     getMuviesWithType = async (type: responseType, index = 1) => {
