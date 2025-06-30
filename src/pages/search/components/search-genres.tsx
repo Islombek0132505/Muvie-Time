@@ -27,13 +27,13 @@ function SearchGenresForm() {
 
     return (
         <div>
-            <h1 className="text-3xl text-white text-center">Search with genres</h1>
+            <h1 className="text-3xl text-white text-center max-md:text-2xl">Search with genres</h1>
             <div className="flex flex-wrap items-center gap-2 mt-4">
-                <h2 className="text-gray-200 text-3xl">Genres: </h2>
+                <h2 className="text-gray-200 text-3xl max-md:text-2xl">Genres: </h2>
                 {genres?.map((item, key) => (
                     <p 
                         className={cn(
-                            "text-xl px-4 py-2 text-gray-200 rounded bg-gray-700 cursor-pointer transition-colors",
+                            "text-xl px-4 py-2 text-gray-200 rounded bg-gray-700 cursor-pointer transition-colors max-md:text-lg max-md:py-1 max-md:px-2",
                             searchGenres.includes(item.id) && "bg-blue-600"
                         )}
                         key={key}
@@ -46,7 +46,7 @@ function SearchGenresForm() {
             <div className="flex justify-center">
                 <button 
                     onClick={startSearch}
-                    className="text-white mt-6 text-xl px-6 py-2 bg-gray-800 rounded"
+                    className="text-white mt-6 text-xl px-6 py-2 bg-gray-800 rounded max-md:text-lg max-md:px-3 max-md:py-1"
                 >
                     Search
                 </button>

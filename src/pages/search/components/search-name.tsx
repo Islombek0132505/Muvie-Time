@@ -21,18 +21,18 @@ function SearchNameForm() {
 
     return (
         <>
-        <div className="text-3xl text-white text-center mt-10">Search with muvie name</div>
+        <h1 className="text-3xl text-white text-center mt-10 max-md:text-2xl">Search with muvie name</h1>
 
         <form onSubmit={handleSubmit} action="submit" className="flex gap-2 items-center mt-4">
             <input
                 type="text" 
                 value={searchName}
                 onChange={handleInputChange}
-                className="text-white w-full h-12 bg-gray-700 rounded-md px-4 focus:outline-none text-xl"
+                className="text-white w-full h-12 max-md:h-10 bg-gray-700 rounded-md px-4 focus:outline-none text-xl"
             />
             <button 
                 type="submit"
-                className="text-white text-xl px-6 bg-gray-800 rounded h-12"
+                className="text-white text-xl px-6 bg-gray-800 rounded h-12 max-md:h-10 max-md:px-3 max-md:text-lg"
             >
                 Search
             </button>
