@@ -1,5 +1,4 @@
 import { navItems } from "../constants"
-import { cn } from "../../utils/cn"
 import Logo from "./logo"
 import { NavLink } from "react-router"
 import { motion } from "framer-motion"
