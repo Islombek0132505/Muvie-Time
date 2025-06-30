@@ -63,7 +63,7 @@ function SearchResults() {
 
     return (
         <SectionContainer>
-            <h1 className="text-3xl text-white pl-4 border-l-4 border-blue-500 mb-6">
+            <h1 className="text-3xl text-white pl-4 border-l-4 border-blue-500 mb-6 max-md:text-xl">
                 {searchType === "genres" && `Results for this genres: ${genres && genres.filter(item => searchMultipleGenre.includes(item.id)).map(item => item.name).join(", ")}`}
                 {searchType === "name" && `Result for this muvie name: ${searchGenreName}`}
             </h1>
