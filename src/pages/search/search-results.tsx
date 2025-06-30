@@ -93,7 +93,7 @@ function SearchResults() {
                 >
                     <FaAngleRight/>
                 </button>
-                <div className="text-white">{totalPage}</div>
+                <p className="text-white">{totalPage}</p>
             </div>
         </SectionContainer>
     )

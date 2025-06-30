@@ -111,6 +111,7 @@ function Muvies({typeComp}: IMuviesCompType) {
                 >
                     <FaAngleRight/>
                 </button>
+                <p className="text-white">{totalPage}</p>
             </div>
         </SectionContainer>
     )

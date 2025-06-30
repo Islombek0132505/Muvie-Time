@@ -35,7 +35,7 @@ function MuvieInfoItem({name, title, link}: IMuvieInfoItem) {
                         <p
                             onClick={() => toMuvieWithGenres(item.name)}
                             key={index}
-                            className="text-gray-500 hover:text-white transition-colors cursor-pointer"
+                            className="text-gray-500 hover:text-white transition-colors cursor-pointer underline underline-offset-2"
                         >
                             {item.name}
                         </p>
