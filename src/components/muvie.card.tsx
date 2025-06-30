@@ -44,10 +44,10 @@ function MuvieCard(data: IMuvies) {
                     />
                     <div className="absolute inset-0 text-white group-hover:translate-x-0 translate-x-[-100%] duration-300 delay-200 bg-black/70 flex flex-col justify-center px-2 gap-4">
                         <h1 className="text-center text-xl font-bold">{data.title}</h1>
-                        <p className="line-clamp-4">{data.overview}</p>
+                        <p className="line-clamp-5 max-md:line-clamp-4 max-md:text-sm">{data.overview}</p>
                         <div className="flex items-center gap-2">
                             <FaStar className="text-yellow-400 size-5"/>
-                            {data.vote_average.toFixed(1)} 
+                            {data.vote_average.toFixed(1)}
                             <TbSeparator className="size-5"/>
                             {data.vote_count} 
                             <IoPerson className="text-blue-700 size-5"/>
